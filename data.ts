@@ -1,11 +1,15 @@
 import { Redis } from '@upstash/redis';
 
-// Credenciais do Upstash ficam em variáveis de ambiente na Vercel:
-//   UPSTASH_REDIS_REST_URL
-//   UPSTASH_REDIS_REST_TOKEN
-// (o Upstash te dá essas duas ao criar o banco — copie e cole nas envs da Vercel)
+// Credenciais vêm da integração Vercel Marketplace (Upstash/KV), que já
+// injeta essas variáveis automaticamente no projeto — nada pra configurar
+// manualmente:
+//   KV_REST_API_URL
+//   KV_REST_API_TOKEN
 
-const redis = Redis.fromEnv();
+const redis = new Redis({
+  url: process.env.KV_REST_API_URL!,
+  token: process.env.KV_REST_API_TOKEN!,
+});
 const KEY = 'vida:db';
 
 export const config = { runtime: 'edge' };
