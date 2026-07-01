@@ -1,0 +1,11 @@
+{
+  "name": "vida-app",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@upstash/redis": "^1.31.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0"
+  }
+}
